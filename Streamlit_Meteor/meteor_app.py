@@ -1,5 +1,9 @@
 import streamlit as st
 import pandas as pd
+import matplotlib
+import plotly.figure_factory as ff
+import plotly.express as px
+import numpy as np
 
 # read data
 meteor_CSV = pd.read_csv('./Data/meteorite-landings.csv')
@@ -11,8 +15,8 @@ df = df.dropna() # removes rows with any missing col
 df.isnull().sum() # checks the number of missing values in each column 
 
 numeric_df = df.select_dtypes(include=["float32","float64","int32","int64"])
-subtitles = ['Raw Meteor Data', 'Description', 'Correlation', 'Covariance']
-subaction = [df, df.describe(), numeric_df.corr(), numeric_df.cov()]   
+subtitles = ['Raw Meteor Data', 'Description', 'Correlation', 'Covariance', 'Misc']
+subaction = [df, df.describe(), numeric_df.corr(), numeric_df.cov(),'']   
 
 with st.sidebar:
     st.title('Display')
@@ -26,3 +30,15 @@ for i in range(len(subtitles)):
     if side_radio == subtitles[i]:
         st.subheader(subtitles[i])
         st.write(subaction[i])
+
+if side_radio == 'Misc':
+    hist_data = [df['year']]
+    group_labels = ['meteor count']
+    fig = ff.create_distplot(
+        hist_data, group_labels, bin_size=[.1, .25, .5])
+    fig.update_layout(title='Meteor Count over Years')
+    st.plotly_chart(fig)
+
+    st.header('Meteor landings')
+    map_df = pd.DataFrame({'lat': df['reclat'], 'lon': df['reclong']})
+    st.map(map_df)
