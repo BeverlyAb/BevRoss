@@ -12,3 +12,5 @@ Create your virtual env. For example `conda create --name meteor python=3.7`. No
 #### Execute
 - `streamlit run filename.py`
 - View your webpage on your local URL specified in your terminal. `http://localhost:XXXX`
+#### Examples
+Find more examples of [Streamlit app](https://streamlit.io/gallery)
