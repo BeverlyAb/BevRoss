@@ -33,12 +33,14 @@ for i in range(len(subtitles)):
 
 if side_radio == 'Misc':
     hist_data = [df['year']]
-    group_labels = ['meteor count']
+    group_labels = ['meteor distribution']
     fig = ff.create_distplot(
         hist_data, group_labels, bin_size=[.1, .25, .5])
-    fig.update_layout(title='Meteor Count over Years')
+    fig.update_layout(title='Meteor distribution over Years')
     st.plotly_chart(fig)
 
+    start_year, end_year = st.slider('Years', value=(1000,2023))
+    map_df = df.loc[df['year'].between(start_year,end_year)]
     st.header('Meteor landings')
-    map_df = pd.DataFrame({'lat': df['reclat'], 'lon': df['reclong']})
+    map_df = pd.DataFrame({'lat': map_df['reclat'], 'lon': map_df['reclong']})
     st.map(map_df)
