@@ -3,7 +3,7 @@
 
 ## Setup 
 ### Virtual Environment (env)
-Create your virtual env. For example `conda create --name meteor python=3.7`. Note that [Streamlit](https://docs.streamlit.io/library/get-started/installation) needs Python 3.7 to 3.11. And run under that env using `conda activate meteor`.
+Create your virtual env. For example `conda create --name meteor python=3.7`. Note that [Streamlit](https://docs.streamlit.io/library/get-started/installation) needs Python 3.7 to 3.11. Run under that env using `conda activate meteor`.
 
 ### Streamlit
 #### Installation
