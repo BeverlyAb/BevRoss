@@ -10,4 +10,4 @@ Read instructions in main [directory](https://github.com/BeverlyAb/BevRoss)
 
 
 ## Demo
-[![Demo]](Media/demo.mp4)
+![Display Pages](Media/display_pages.mp4)
